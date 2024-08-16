@@ -1,5 +1,5 @@
 <button
-  class="btn btn-link p-0"
+  class="btn btn-link badge rounded-pill text-dark mb-2 me-2"
   data-bs-toggle="popover"
   data-bs-trigger="focus"
   data-bs-container="body"
@@ -7,13 +7,17 @@
   data-bs-html="true"
   data-bs-content="
     {% for api in vendor.apis %}
-    <a
-      href='https://beta.imprompt.ai/builder/plugins?openapi_doc_url={{ api.openapi_doc_url }}'
-      target='_blank'
-    >
-      {{ api.title }}
-    </a>
-    {% endfor %}"
+    <div>
+      <a
+        href='https://beta.imprompt.ai/builder/plugins?openapi_doc_url={{ api.openapi_doc_url }}'
+        target='_blank'
+      >
+        {{ api.title }}
+      </a>
+    </div>
+    {% endfor %}
+  "
+  style="background-color: #e6e6e6; text-decoration: none;"
 >
   {{ vendor.domain }}
 </button>

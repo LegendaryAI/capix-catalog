@@ -21,22 +21,18 @@
         </div>
         <div class="col">
           <h5>APIs by Vendor</h5>
-          <div class="row">
-            <div class="col">
-              {% for vendor in data.vendors[:data.vendors|length//2] %}
-              <div>
-                {% include 'templates/vendor_api_template.html' %}
+          {% set ns = namespace(current_letter='') %}
+          <div>
+          {% for vendor in data.vendors %}
+            {% if vendor.domain[0] != ns.current_letter %}
+              {% set ns.current_letter = vendor.domain[0] %}
+              <hr />
+              <div class="mb-2 fw-bold">
+                {{ ns.current_letter }}
               </div>
-              {% endfor %}
-            </div>
-            <div class="col">
-              {% for vendor in data.vendors[data.vendors|length//2:] %}
-              <div>
-                {% include 'templates/vendor_api_template.html' %}
-              </div>
-              {% endfor %}
-            </div>
-          </div>
+            {% endif %}
+            {% include 'templates/vendor_api_template.html' %}
+          {% endfor %}
         </div>
       </div>
     </div>
