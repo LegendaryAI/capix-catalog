@@ -1,0 +1,19 @@
+<button
+  class="btn btn-link p-0"
+  data-bs-toggle="popover"
+  data-bs-trigger="focus"
+  data-bs-container="body"
+  data-bs-placement="right"
+  data-bs-html="true"
+  data-bs-content="
+    {% for api in vendor.apis %}
+    <a
+      href='https://beta.imprompt.ai/builder/plugins?openapi_doc_url={{ api.openapi_doc_url }}'
+      target='_blank'
+    >
+      {{ api.title }}
+    </a>
+    {% endfor %}"
+>
+  {{ vendor.domain }}
+</button>

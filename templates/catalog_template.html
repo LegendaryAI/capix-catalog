@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <style>
+    .btn-link:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="py-4">
+      <div class="row">
+        <div class="col">
+          <h5>Plugins</h5>
+          <p>Coming Soon!</p>
+        </div>
+        <div class="col">
+          <h5>APIs by Vendor</h5>
+          <div class="row">
+            <div class="col">
+              {% for vendor in data.vendors[:data.vendors|length//2] %}
+              <div>
+                {% include 'templates/vendor_api_template.html' %}
+              </div>
+              {% endfor %}
+            </div>
+            <div class="col">
+              {% for vendor in data.vendors[data.vendors|length//2:] %}
+              <div>
+                {% include 'templates/vendor_api_template.html' %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    })
+  </script>
+</body>
+
+</html>
